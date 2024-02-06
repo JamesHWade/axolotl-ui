@@ -4,7 +4,7 @@ from shiny import App, Inputs, Outputs, Session, ui, reactive
 import shinyswatch
 from htmltools import HTML
 
-from utils import background_img, question_circle_fill
+from utils import background_img, question_circle_fill, read_markdown_file
 
 
 www_dir = Path(__file__).parent.resolve() / "www"
@@ -97,7 +97,8 @@ app_ui = ui.page_fillable(
             class_="opacity-75"
         ),
         HTML(background_img(url="https://github.com/OpenAccess-AI-Collective/axolotl/raw/main/image/axolotl.png",
-                            opacity=0.1))
+                            opacity=0.1)),
+        ui.markdown(read_markdown_file(path="README.md"))
     )
 )
 

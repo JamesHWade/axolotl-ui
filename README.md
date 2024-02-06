@@ -8,7 +8,7 @@ pinned: false
 license: apache-2.0
 ---
 
-Note: This is filler text for now, but the app will be a fine-tuning app for Hugging Face models. It will allow users to easily fine-tune models on their own datasets using Hugging Face's infrastructure.
+**Note: This is filler text for now, but the app will be a fine-tuning app for Hugging Face models. It will allow users to easily fine-tune models on their own datasets using Hugging Face's infrastructure.**
 
 ## Getting Started with Your Fine-Tuning App on Hugging Face Spaces
 
