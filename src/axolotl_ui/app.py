@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from shiny import App, Inputs, Outputs, Session, ui
+from shiny import App, Inputs, Outputs, Session, ui, reactive
 import shinyswatch
 from htmltools import HTML
 
@@ -103,7 +103,11 @@ app_ui = ui.page_fillable(
 
 
 def server(input: Inputs, output: Outputs, session: Session):
-    return ()
+    @reactive.Effect
+    @reactive.event(input.create_space)
+    def _():
+        ui.notification_show("This is not yet implemented.", type="warning")
+    
 
 
 app = App(
