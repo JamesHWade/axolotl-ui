@@ -1,14 +1,10 @@
 from pathlib import Path
 
-import seaborn as sns
-import shinyswatch
-
 from shiny import App, Inputs, Outputs, Session, ui
 from htmltools import HTML
 
 from utils import background_img, question_circle_fill
 
-sns.set_theme()
 
 www_dir = Path(__file__).parent.resolve() / "www"
 
