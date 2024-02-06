@@ -1,0 +1,21 @@
+[project]
+name = "axolotl-ui"
+version = "0.0.1"
+description = "Default template for PDM package"
+authors = [
+    {name = "James Wade", email = "github@jameshwade.com"},
+]
+dependencies = [
+    "shiny==0.7.0",
+    "shinyswatch==0.4.2",
+    "seaborn==0.12.2",
+    "matplotlib==3.7.1",
+    "autotrain-advanced>=0.6.83",
+]
+requires-python = ">=3.9"
+readme = "README.md"
+license = {text = "Apache-2"}
+
+
+[tool.pdm]
+distribution = false
