@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from shiny import App, Inputs, Outputs, Session, ui
+import shinyswatch
 from htmltools import HTML
 
 from utils import background_img, question_circle_fill
