@@ -93,8 +93,7 @@ app_ui = ui.page_fillable(
                 "create_space",
                 "Create HF Space",
             ),
-            width=400,
-            class_="opacity-75"
+            width=400
         ),
         HTML(background_img(url="https://github.com/OpenAccess-AI-Collective/axolotl/raw/main/image/axolotl.png",
                             opacity=0.1)),
