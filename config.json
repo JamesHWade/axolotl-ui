@@ -1,0 +1,156 @@
+{
+    "section-label": "Model",
+    "section": true,
+    "open": true,
+    {
+        "id": "base_model",
+        "label": "Base Model",
+        "input_type": "text",
+        "placeholder": "NousResearch/Llama-2-7b-hf",
+        "tooltip": "The model to use for the base model"
+    }
+    {
+        "id": "model_type",
+        "label": "Model Type",
+        "input_type": "select",
+        "choices": ["LlamaForCausalLM", "LlamaForCausalLMv2"],
+        "selected": "LlamaForCausalLM",
+        "tooltip": "The type of model that is being used"       
+    }
+}
+{
+    "section-label": "Lora",
+    "section": true,
+    "open": false,
+    {
+        "id": "lora_r",
+        "label": "Lora R",
+        "input_type": "number",
+        "placeholder": "32",
+        "tooltip": "The number of attention heads",
+        "min": 1,
+        "max": 64,
+        "step": 1
+    }
+    {
+        "id": "lora_alpha",
+        "label": "Lora Alpha",
+        "input_type": "number",
+        "placeholder": "16",
+        "tooltip": "The number of attention heads",
+        "min": 1,
+        "max": 64,
+        "step": 1
+    }
+    {
+        "id": "lora_dropout",
+        "label": "Lora Dropout",
+        "input_type": "number",
+        "placeholder": "0.05",
+        "tooltip": "The number of attention heads",
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.01
+    }
+    {
+        "id": "lora_target_modules",
+        "label": "Lora Target Modules",
+        "input_type": "text",
+        "placeholder": "None",
+        "tooltip": "The number of attention heads"
+    }
+    {
+        "id": "lora_target_linear",
+        "label": "Lora Target Linear",
+        "input_type": "checkbox",
+        "tooltip": "The number of attention heads"
+    }
+    {
+        "id": "lora_fan_in_fan_out",
+        "label": "Lora Fan In Fan Out",
+        "input_type": "checkbox",
+        "tooltip": "The number of attention heads"
+    }
+}
+{
+    "section-label": "Wandb",
+    "section": true,
+    "open": false,
+    {
+        "id": "wandb_project",
+        "label": "Wandb Project",
+        "input_type": "text",
+        "placeholder": "llama-2-7b-hf",
+        "tooltip": "The wandb project to log to"
+    }
+    {
+        "id": "wandb_entity",
+        "label": "Wandb Entity",
+        "input_type": "text",
+        "placeholder": "nousresearch",
+        "tooltip": "The wandb entity to log to"
+    }
+    {
+        "id": "wandb_watch",
+        "label": "Wandb Watch",
+        "input_type": "checkbox",
+        "tooltip": "Whether to watch the model"
+    }
+    {
+        "id": "wandb_name",
+        "label": "Wandb Name",
+        "input_type": "text",
+        "placeholder": "llama-2-7b-hf",
+        "tooltip": "The wandb name to log to"
+    }
+    {
+        "id": "wandb_log_model",
+        "label": "Wandb Log Model",
+        "input_type": "checkbox",
+        "tooltip": "Whether to log the model"
+    }
+}
+{
+    "section-label": "Datasets",
+    "section": true,
+    "open": false,
+    {
+        "id": "datasets",
+        "label": "Datasets",
+        "input_type": "text",
+        "placeholder": "mhenrichsen/alpaca_2k_test",
+        "tooltip": "The dataset to use"
+    }
+    {
+        "id": "type",
+        "label": "Type",
+        "input_type": "select",
+        "choices": ["alpaca", "custom"],
+        "selected": "alpaca",
+        "tooltip": "The type of dataset that is being used"
+    }
+    {
+        "id": "dataset_prepared_path",
+        "label": "Dataset Prepared Path",
+        "input_type": "text",
+        "placeholder": "None",
+        "tooltip": "The path to the prepared dataset"
+    }
+    {
+        "id": "val_set_size",
+        "label": "Val Set Size",
+        "input_type": "number",
+        "placeholder": "0.05",
+        "tooltip": "The size of the validation set",
+        "min": 0.0,
+        "max": 1.0,
+        "step": 0.01
+    }
+    {
+        "id": "output_dir",
+        "label": "Output Dir",
+        "input_type": "text",
+        "placeholder": "./qlora-out",
+        "tooltip": "The output directory"
+    }
+}
