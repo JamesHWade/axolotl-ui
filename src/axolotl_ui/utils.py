@@ -1,4 +1,5 @@
 from shiny import ui
+import yaml
 
 
 # https://icons.getbootstrap.com/icons/question-circle-fill/
@@ -51,16 +52,82 @@ def background_img(url: str, opacity: float) -> str:
 
 
 def read_markdown_file(path):
-    with open(path, 'r') as file:
+    with open(path, "r") as file:
         lines = file.readlines()
-    
+
     # Find the start and end of the YAML header
-    yaml_delimiters = [i for i, line in enumerate(lines) if line.strip() == '---']
-    
+    yaml_delimiters = [i for i, line in enumerate(lines) if line.strip() == "---"]
+
     # Skip the YAML header if it exists (assuming there are two delimiters)
     if len(yaml_delimiters) == 2:
         content_start = yaml_delimiters[1] + 1
-        return ''.join(lines[content_start:])
+        return "".join(lines[content_start:])
     else:
         # No YAML header found, return the entire content
-        return ''.join(lines)
+        return "".join(lines)
+
+
+def read_yaml(path: str) -> dict:
+    with open(path, "r") as file:
+        lines = file.readlines()
+    lines = [line.strip() for line in lines]
+    lines = [line for line in lines if line and not line.startswith("#")]
+    return yaml.safe_load("\n".join(lines))
+
+
+def create_accordion_from_config(
+    config: dict, section_name: str = "Config", open: bool = False
+) -> str:
+    """
+    Create a user interface from a configuration dictionary.
+
+    This function generates a sidebar with input fields for each key-value pair in the configuration dictionary.
+    The type of input field depends on the type of the value:
+    - If the value is a boolean, it creates radio buttons with options for True and False.
+    - If the value is a number (int or float), it creates a numeric input field.
+    - For other types of values, it creates a text input field.
+
+    Parameters:
+    config (dict): The configuration dictionary.
+    section_name (str): The name of the section.
+    open (bool): Whether the section should be open by default.
+
+    Returns:
+    str: A string representing the user interface.
+    """
+    # Create a list of UI elements
+    ui_elements = []
+    for key, value in config.items():
+        # Check the type of the value
+        if isinstance(value, bool):
+            # If it's a boolean, create radio buttons
+            input_element = ui.input_radio_buttons(
+                id=key,
+                label=key,
+                choices=[True, False],
+                selected=value,
+            )
+        elif isinstance(value, (int, float)):
+            # If it's a number, create a numeric input
+            input_element = ui.input_numeric(
+                id=key,
+                label=key,
+                min=0,  # You may want to adjust this
+                max=100,  # You may want to adjust this
+                step=1,  # You may want to adjust this
+                value=value,
+                width=400,
+            )
+        else:
+            # Otherwise, create an input text field
+            input_element = ui.input_text(
+                id=key,
+                label=key,
+                placeholder=str(value),
+            )
+        ui_elements.append(input_element)
+
+    # Create accordion with the UI elements
+    return ui.accordion(
+        ui.accordion_panel(section_name, *ui_elements, width=400), open=open
+    )
